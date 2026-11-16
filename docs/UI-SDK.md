@@ -27,6 +27,14 @@ Ordinary settings use shipped Dialog, Tabs, Segmented Control, Slider, Switch, F
 
 The earlier physical-control baseline passed `pnpm check` (43 Vitest tests, typed lint, package typechecks and builds), `pnpm format:check`, and the three browser suites above (19 Chromium tests). The relative-wheel update expanded those suites to 20 tests. A new shortcut regression exercises opening settings, modal playback suppression, rebinding a note, starting/pausing playback and independently releasing a chord. The previous 120-frame idle Chromium sample had median 16.7ms / p95 16.8ms; no new performance or latency improvement is claimed. React Doctor's changed-scope scan cannot establish a baseline because this checkout has no HEAD commit. The thread's current acceptance record owns the latest rendered evidence and command results.
 
+## Pocket Arcade implementation
+
+The handheld now uses shipped `RadioGroup`/`Radio` for cartridge selection, `Slider` for bounded volume/brightness and `Dialog` with title, description, trigger and close parts for settings. The settings dialog is nonmodal so physical Start/Select/B can close it; it stays anchored to the console screen and returns keyboard focus to Settings. Application state owns OS transitions and game choice; SDK parts own standard focus, selection, slider keys and dismissal. No custom Primitive is needed for this contract.
+
+Native pointer capture and source-owned press/release remain intentional for simultaneous game inputs; `ArcadeInput` releases only the source that ended, clears on cancellation/blur, and feeds independent Canvas simulations. Game elapsed time uses the unlocked audio clock, with a performance-clock fallback when audio fails. Pause cancels scheduled tones; Rhythm Rush reschedules only future events. Settings are visit-local, not persisted.
+
+`tests/pocket-arcade.spec.ts` exercises the real console lifecycle, settings through the existing `window.ouuoAgent` bridge, focus return, screen-relative dialog placement, game results/replay, multitouch cancellation, keyboard/touch ownership, audio failure and responsive reduced-motion layouts. Unit tests cover game contracts and input ownership. Emulated touch is not real-device verification; audible latency, physical-device multitouch and comparative frame/input measurements remain open.
+
 ## Earlier inspected baseline
 
 - Reviewed on 2026-11-16: all three app sources, collection UI, shared integration, piano input/session code, audio ownership, Vitest/Playwright configuration and current tests.
@@ -58,7 +66,7 @@ The SDK is not the audio engine, a piano scheduler or a game renderer. ouuo uses
 - [plonko UI](../apps/plonko/src/App.tsx) uses individual component entries, named keys, controlled mode/settings and documented Dialog/Slider/Switch parts. It composes the app-local song browser and practice timeline without reimplementing standard widgets.
 - [Piano controller](../apps/plonko/src/usePiano.ts) routes settings into the engine, tracks input sources independently, releases on blur/hidden tabs and settings open, and cleans up listeners/timers/audio on unmount. The session-start operation token guards superseded starts after asynchronous unlock.
 - [Audio](../packages/audio/src/piano.ts) owns voice creation, scheduling and disposal. [Score logic](../apps/plonko/src/score.ts) is independent of DOM and SDK. Preserve these owners and clocks.
-- [Tiny Studio](../apps/tiny-studio/src/App.tsx) and [Pocket Arcade](../apps/pocket-arcade/src/App.tsx) correctly use [Workshop](../packages/shared/src/index.tsx) with explicit planned-feature text and ordinary home/skip links. There are no fake knobs or game controls to replace.
+- [Tiny Studio](../apps/tiny-studio/src/App.tsx) still uses [Workshop](../packages/shared/src/index.tsx) with explicit planned-feature text and ordinary home/skip links. [Pocket Arcade](../apps/pocket-arcade/src/App.tsx) now implements the handheld and games described above, with SDK menus/settings and independent real-time input.
 - [Collection](../apps/web/src/App.tsx) uses an SDK About dialog and a Button rendered as a navigation link; ordinary exhibit anchors need no Primitive. Existing browser tests cover About dismissal/focus return.
 
 ## In-page agent bridge

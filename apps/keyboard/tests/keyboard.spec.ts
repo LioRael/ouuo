@@ -312,6 +312,7 @@ test('touch rolls the side wheel without scrolling and cancellation restores the
   await page.setViewportSize({ width: 390, height: 780 })
   await page.goto('/')
   await expect(page.locator('.keyboard-case[data-rendered]')).toBeVisible()
+  await page.getByRole('button', { name: 'Play full size' }).click()
   const angle = page.getByRole('slider', { name: 'Viewing angle' })
   const wheel = page.locator('.keyboard-angle [data-slot="slider-control"]')
   await wheel.scrollIntoViewIfNeeded()
@@ -736,6 +737,8 @@ test('small screens retain usable keys without page overflow and reduced motion 
     await page.setViewportSize({ width, height: 900 })
     await page.goto('/')
     await expect(page.locator('.keyboard-case')).toBeVisible()
+    if (width < 1120)
+      await page.getByRole('button', { name: 'Play full size' }).click()
     for (const view of ['Flat', 'Perspective']) {
       await chooseView(page, view)
       expect(
@@ -759,4 +762,83 @@ test('small screens retain usable keys without page overflow and reduced motion 
       await expect(key).not.toHaveAttribute('data-down')
     }
   }
+})
+
+test('small screens switch between a silent complete overview and full-size play without losing settings', async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 390, height: 844 })
+  await page.goto('/')
+  const play = page.getByRole('button', { name: 'Play full size' })
+  await expect(play).toBeVisible()
+  await expect(page.locator('.keyboard-case[data-rendered]')).toBeVisible()
+  const canvas = page.locator('.keyboard-case canvas')
+  const preview = (await canvas.boundingBox())!
+  expect(preview.x).toBeGreaterThanOrEqual(0)
+  expect(preview.x + preview.width).toBeLessThanOrEqual(390)
+  await page.mouse.click(
+    preview.x + preview.width / 2,
+    preview.y + preview.height / 2,
+  )
+  await page.keyboard.press('a')
+  expect(await keyHistory(page)).toEqual([])
+
+  await play.focus()
+  await page.keyboard.press('Enter')
+  const overview = page.getByRole('button', { name: 'View whole keyboard' })
+  await expect(overview).toBeFocused()
+  const sound = page.getByRole('switch', { name: 'Key sound' })
+  await sound.click()
+  await expect(sound).toHaveAttribute('aria-checked', 'false')
+  const key = page.getByRole('button', { name: '→ key', exact: true })
+  await key.scrollIntoViewIfNeeded()
+  await expect(key).toBeInViewport()
+  const fullSize = (await key.boundingBox())!
+  expect(fullSize.width).toBeGreaterThanOrEqual(44)
+  expect(fullSize.height).toBeGreaterThanOrEqual(44)
+  await key.click()
+  expect(await keyHistory(page)).toEqual(['ArrowRight'])
+  await expect(overview).toBeInViewport()
+  await overview.click()
+  await expect(play).toBeFocused()
+  expect((await canvas.boundingBox())!.width).toBeCloseTo(preview.width)
+
+  await page.evaluate(() =>
+    window.ouuoAgent.act({
+      steps: [{ ref: 'Play full size', action: 'press' }],
+    }),
+  )
+  await expect(overview).toBeVisible()
+  await expect(sound).toHaveAttribute('aria-checked', 'false')
+  await page.setViewportSize({ width: 844, height: 390 })
+  await expect(overview).toBeInViewport()
+  await key.scrollIntoViewIfNeeded()
+  await expect(key).toBeInViewport()
+  const landscapeKey = (await key.boundingBox())!
+  expect(landscapeKey.y + landscapeKey.height).toBeLessThan(
+    (await overview.boundingBox())!.y,
+  )
+  await page.keyboard.down('j')
+  await expect(page.locator('[data-code="KeyJ"]')).toHaveAttribute('data-down')
+  await page.evaluate(() =>
+    window.ouuoAgent.act({
+      steps: [{ ref: 'View whole keyboard', action: 'press' }],
+    }),
+  )
+  await expect(page.locator('[data-code="KeyJ"]')).not.toHaveAttribute(
+    'data-down',
+  )
+  await page.keyboard.up('j')
+  const landscapePreview = (await canvas.boundingBox())!
+  expect(landscapePreview.y).toBeGreaterThanOrEqual(0)
+  expect(landscapePreview.y + landscapePreview.height).toBeLessThanOrEqual(390)
+
+  await page.setViewportSize({ width: 1440, height: 900 })
+  await expect(play).toBeHidden()
+  await expect(page.getByRole('switch', { name: 'Key sound' })).toHaveAttribute(
+    'aria-checked',
+    'false',
+  )
+  await page.keyboard.press('k')
+  expect(await keyHistory(page)).toEqual(['ArrowRight', 'KeyJ', 'KeyK'])
 })

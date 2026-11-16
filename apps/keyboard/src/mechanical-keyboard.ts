@@ -195,6 +195,13 @@ export const mechanicalKeyboard = definePrimitive({
             api.clearHeld()
         }
         const clear = () => api.clearHeld()
+        const availability = new MutationObserver(() => {
+          if (el.inert) clear()
+        })
+        availability.observe(el, {
+          attributes: true,
+          attributeFilter: ['inert'],
+        })
         const focusout = (event: FocusEvent) => {
           if (
             !(event.relatedTarget instanceof Node) ||
@@ -208,6 +215,7 @@ export const mechanicalKeyboard = definePrimitive({
         window.addEventListener('blur', clear)
         el.addEventListener('focusout', focusout)
         return () => {
+          availability.disconnect()
           document.removeEventListener('keydown', keydown)
           document.removeEventListener('keyup', keyup)
           document.removeEventListener('visibilitychange', clear)

@@ -10,6 +10,7 @@ import {
 } from 'react'
 import '@ouuo/shared'
 import { bindDrag } from '@ui-sdk/core'
+import { Button } from '@ui-sdk/react/button'
 import { createParts } from '@ui-sdk/react/primitive'
 import {
   createSliderController,
@@ -119,6 +120,29 @@ export default function App() {
   const [sound, setSound] = useState(true)
   const [backlight, setBacklight] = useState(true)
   const [angle, setAngle] = useState(0)
+  const [playing, setPlaying] = useState(false)
+  const [surfaceSize, setSurfaceSize] = useState({ width: 1120, height: 900 })
+  const compact = surfaceSize.width < 1120
+  const overview = compact && !playing
+  const availableHeight = Math.max(160, surfaceSize.height - 128)
+  const scroll = useRef<HTMLElement | null>(null)
+  const viewport = useCallback((element: HTMLElement | null) => {
+    if (!element) return
+    scroll.current = element
+    const measure = () =>
+      setSurfaceSize({ width: element.clientWidth, height: window.innerHeight })
+    const resize = new ResizeObserver(measure)
+    resize.observe(element)
+    window.addEventListener('resize', measure)
+    return () => {
+      resize.disconnect()
+      window.removeEventListener('resize', measure)
+      scroll.current = null
+    }
+  }, [])
+  useEffect(() => {
+    if (overview && scroll.current) scroll.current.scrollLeft = 0
+  }, [overview])
   const [audioError, setAudioError] = useState(false)
   const [renderError, setRenderError] = useState(false)
   const audio = useRef<{ context: AudioContext; output: GainNode } | null>(null)
@@ -240,7 +264,18 @@ export default function App() {
       data-view={angle === 0 ? 'flat' : 'perspective'}
       data-angle={angle}
       data-sound={sound}
-      style={{ '--keyboard-angle': `${angle * 0.64}deg` } as CSSProperties}
+      data-compact={compact || undefined}
+      data-overview={overview || undefined}
+      style={
+        {
+          '--keyboard-angle': `${angle * 0.64}deg`,
+          '--keyboard-preview-scale': Math.min(
+            surfaceSize.width / 1120,
+            availableHeight / 660,
+          ),
+          '--keyboard-available-height': `${availableHeight}px`,
+        } as CSSProperties
+      }
     >
       <h1 className="keyboard-sr-only">Mechanical Keyboard</h1>
       <p id="keyboard-help" className="keyboard-sr-only">
@@ -260,9 +295,14 @@ export default function App() {
       <KeyboardRoot
         id="keyboard"
         className="keyboard-instrument"
+        inert={overview}
         aria-label="Mechanical keyboard"
         aria-describedby="keyboard-help"
         onValueChange={(value, details) => {
+          if (overview && details.reason === 'key-press') {
+            details.cancel()
+            return
+          }
           if (details.reason === 'key-press') {
             const code = value.at(-1)
             if (code) {
@@ -274,6 +314,7 @@ export default function App() {
       >
         <section
           className="keyboard-scroll"
+          ref={viewport}
           tabIndex={-1}
           aria-label="Keyboard surface"
         >
@@ -378,6 +419,37 @@ export default function App() {
           </div>
         </section>
       </KeyboardRoot>
+      {compact ? (
+        <div className="keyboard-size-controls">
+          <Button
+            className="keyboard-size-button"
+            aria-controls="keyboard"
+            onClick={() => setPlaying(!playing)}
+          >
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              aria-hidden="true"
+            >
+              {overview ? (
+                <path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5" />
+              ) : (
+                <path d="M3 8h5V3m13 5h-5V3M8 21v-5H3m13 5v-5h5" />
+              )}
+            </svg>
+            {overview ? 'Play full size' : 'View whole keyboard'}
+          </Button>
+          <p aria-live="polite">
+            {overview
+              ? 'Enlarge to tap the keys'
+              : 'Tap to play · Swipe to explore'}
+          </p>
+        </div>
+      ) : null}
     </main>
   )
 }

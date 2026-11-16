@@ -1,0 +1,63 @@
+- main [ref=f16e2]:
+    - generic [ref=f16e3]:
+        - generic [ref=f16e4]: ouuo.
+        - generic [ref=f16e5]: keyboard / launch kit
+    - heading "keyboard." [level=1] [ref=f16e6]
+    - paragraph [ref=f16e7]: 一把可以在网页里敲着玩的机械键盘。这套素材包含真实交互录屏、应用敲击声、中英字幕、平台文案和分享图片。
+    - paragraph [ref=f16e8]:
+        - link "查看中英宣传文案与发布方案" [ref=f16e9] [cursor=pointer]:
+            - /url: 宣传文案.md
+        - text: ·
+        - link "打开 keyboard" [ref=f16e10] [cursor=pointer]:
+            - /url: https://ouuo.dev/keyboard
+    - heading "宣传视频" [level=2] [ref=f16e11]
+    - generic [ref=f16e12]:
+        - figure "横版 · 1920 × 1080 · 19.5 秒 · 下载 MP4" [ref=f16e13]:
+            - generic "keyboard 横版宣传视频，中英双语字幕与敲击声" [ref=f16e14]
+            - generic [ref=f16e15]:
+                - text: 横版 · 1920 × 1080 · 19.5 秒 ·
+                - link "下载 MP4" [ref=f16e16] [cursor=pointer]:
+                    - /url: video/keyboard-wide.mp4
+        - figure "竖版 · 1080 × 1920 · 19.5 秒 · 下载 MP4" [ref=f16e17]:
+            - generic "keyboard 竖版宣传视频，中英双语字幕与敲击声" [ref=f16e18]
+            - generic [ref=f16e19]:
+                - text: 竖版 · 1080 × 1920 · 19.5 秒 ·
+                - link "下载 MP4" [ref=f16e20] [cursor=pointer]:
+                    - /url: video/keyboard-tall.mp4
+    - heading "小红书图文" [level=2] [ref=f16e21]
+    - paragraph [ref=f16e22]: 三张按顺序发布，配套文案在上方文件中。每张 1080 × 1440。
+    - generic [ref=f16e23]:
+        - figure [ref=f16e24]:
+            - link [ref=f16e25] [cursor=pointer]:
+                - /url: images/xiaohongshu-1.png
+                - img "完整机械键盘：在网页里，敲一会儿键盘。" [ref=f16e26]
+        - figure [ref=f16e27]:
+            - link [ref=f16e28] [cursor=pointer]:
+                - /url: images/xiaohongshu-2.png
+                - img "机械键盘倾斜视角：换个角度，再敲两下。" [ref=f16e29]
+        - figure [ref=f16e30]:
+            - link [ref=f16e31] [cursor=pointer]:
+                - /url: images/xiaohongshu-3.png
+                - img "机械键帽细节：按下去，听见一点快乐。" [ref=f16e32]
+    - heading "ouuo 官网 OG" [level=2] [ref=f16e33]
+    - figure "1200 × 630 · 下载 PNG" [ref=f16e34]:
+        - link [ref=f16e35] [cursor=pointer]:
+            - /url: images/ouuo-og.png
+            - img "ouuo 品牌、蓝色 plonko 和黑色 mechanical keyboard 的官网分享图片" [ref=f16e36]
+        - generic [ref=f16e37]:
+            - text: 1200 × 630 ·
+            - link "下载 PNG" [ref=f16e38] [cursor=pointer]:
+                - /url: images/ouuo-og.png
+    - heading "keyboard 分享 OG" [level=2] [ref=f16e39]
+    - figure "1200 × 630 · 下载 PNG" [ref=f16e40]:
+        - link [ref=f16e41] [cursor=pointer]:
+            - /url: images/keyboard-og.png
+            - img "keyboard 黑色机械键盘的链接分享图片" [ref=f16e42]
+        - generic [ref=f16e43]:
+            - text: 1200 × 630 ·
+            - link "下载 PNG" [ref=f16e44] [cursor=pointer]:
+                - /url: images/keyboard-og.png
+    - generic [ref=f16e45]:
+        - link "制作、验证与接入说明" [ref=f16e46] [cursor=pointer]:
+            - /url: README.md
+        - paragraph [ref=f16e47]: 素材已制作，尚未发布到社交平台。OG 已接入本地代码，线上生效需部署。

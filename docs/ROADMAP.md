@@ -1,6 +1,6 @@
 # Roadmap
 
-This is future scope and release criteria, not a list of shipped features or dated commitments. plonko is the only implemented playable work. Tiny Studio and Pocket Arcade currently render nonplayable workshop entrances.
+This records future scope and release criteria, not dated commitments. plonko and Pocket Arcade have playable implementations. Tiny Studio remains a nonplayable workshop entrance. Playable does not mean every release gate below is verified.
 
 Acceptance items remain open until someone records evidence from the relevant checks. Existing code or a test file alone does not close an item.
 
@@ -30,7 +30,9 @@ The entrance describes a synthesizer, drum machine and sequencer. None of these 
 
 ## 3. Pocket Arcade: a playable handheld
 
-This scope carries forward the supplied Pocket Arcade brief. It is all planned, including the console operating system and the three games. The existing entrance does not implement power, controls, games or rendering loops.
+The supplied Pocket Arcade brief now has a playable implementation: a handheld-only page, power and boot, SDK game library/settings, visit-local volume/brightness, pause/results/replay and three original Canvas games. Keyboard, mouse and independent touch sources share an input owner; audio and rendering stay outside React timing.
+
+Rhythm Rush has 32 notes at 120 BPM and explicit 60ms/150ms scoring windows. Pixel Racer has deterministic 120Hz steering/collisions and a 45-second survival limit. Mini Puzzle has three authored, solvable 3×3 boards and undo. Unit and Chromium page tests exercise these contracts. The checklist remains the broader promotion gate: real touch devices, Firefox/Safari, audible assessment and named-device performance evidence must not be inferred from those tests. Settings deliberately reset on reload; no storage is used. Keyboard remapping and optional cartridge insertion are not implemented.
 
 ### Console foundation
 

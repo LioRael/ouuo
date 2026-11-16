@@ -1,0 +1,84 @@
+- main "plonko" [ref=e3]:
+    - heading "plonko" [level=1] [ref=e4]
+    - generic [ref=e6]:
+        - generic:
+            - generic:
+                - generic:
+                    - generic: Keyboard & touch
+                    - generic: Ready to play
+                - generic: Live input
+        - group [ref=e8]:
+            - 'generic "Volume: drag left or right" [ref=e9]':
+                - generic [ref=e11]:
+                    - slider "Volume": '65'
+            - generic:
+                - generic: Volume
+                - status: '65'
+        - generic [ref=e12]:
+            - generic [ref=e13]:
+                - generic [ref=e14]:
+                    - generic [ref=e15]: plonko.
+                    - generic [ref=e16]: a little room for noise
+                - generic [ref=e18]:
+                    - generic [ref=e19]: First Light
+                    - strong [ref=e20]: hello :)
+                    - generic [ref=e21]: touch a key. make a little noise.
+                - button "Piano settings" [ref=e22] [cursor=pointer]:
+                    - generic [ref=e24]: other side
+            - generic [ref=e25]:
+                - radiogroup "Instrument mode" [ref=e26]:
+                    - radio "Free play" [checked] [ref=e27] [cursor=pointer]
+                    - radio [checked] [aria-hidden]
+                    - radio "Listen" [ref=e30] [cursor=pointer]
+                    - radio [aria-hidden]
+                    - radio "Challenge" [ref=e33] [cursor=pointer]
+                    - radio [aria-hidden]
+                - generic [ref=e36]:
+                    - generic [ref=e37]:
+                        - button "Previous song" [ref=e38] [cursor=pointer]: ‹
+                        - button "Next song" [ref=e39] [cursor=pointer]: ›
+                    - button "Hold sustain" [ref=e40] [cursor=pointer]: sustain
+                    - button "Mute instrument" [ref=e42] [cursor=pointer]: sound
+            - generic "Piano keyboard" [ref=e43]:
+                - button "Play C4" [ref=e44] [cursor=pointer]:
+                    - generic: C4
+                    - generic: A
+                - button "Play C♯4" [ref=e45] [cursor=pointer]:
+                    - generic: C♯4
+                    - generic: W
+                - button "Play D4" [ref=e46] [cursor=pointer]:
+                    - generic: D4
+                    - generic: S
+                - button "Play D♯4" [ref=e47] [cursor=pointer]:
+                    - generic: D♯4
+                    - generic: E
+                - button "Play E4" [ref=e48] [cursor=pointer]:
+                    - generic: E4
+                    - generic: D
+                - button "Play F4" [ref=e49] [cursor=pointer]:
+                    - generic: F4
+                    - generic: F
+                - button "Play F♯4" [ref=e50] [cursor=pointer]:
+                    - generic: F♯4
+                    - generic: T
+                - button "Play G4" [ref=e51] [cursor=pointer]:
+                    - generic: G4
+                    - generic: G
+                - button "Play G♯4" [ref=e52] [cursor=pointer]:
+                    - generic: G♯4
+                    - generic: 'Y'
+                - button "Play A4" [ref=e53] [cursor=pointer]:
+                    - generic: A4
+                    - generic: H
+                - button "Play A♯4" [ref=e54] [cursor=pointer]:
+                    - generic: A♯4
+                    - generic: U
+                - button "Play B4" [ref=e55] [cursor=pointer]:
+                    - generic: B4
+                    - generic: J
+                - button "Play C5" [ref=e56] [cursor=pointer]:
+                    - generic: C5
+                    - generic: K
+            - generic [aria-hidden] [ref=e57]:
+                - generic [ref=e58]: ouuo
+                - generic [ref=e59]: GP / 13

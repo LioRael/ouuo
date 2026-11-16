@@ -173,7 +173,7 @@ export default function App() {
             <a href="/pocket-arcade/">
               <span>Pocket Arcade</span>
               <span>A little world you can hold</span>
-              <span>In development</span>
+              <span>Playable study</span>
             </a>
           </div>
         </section>

@@ -1,0 +1,105 @@
+- main "Mechanical Keyboard" [ref=f1e3]:
+    - heading "Mechanical Keyboard" [level=1] [ref=f1e4]
+    - paragraph [ref=f1e5]: Type, click or tap the keys. Drag with a mouse to play across keys. Swipe horizontally to reach every key on a small screen. Tab to enter, arrows to move, Enter or Space to press. The orange dial toggles the backlight. Roll the right-side wheel up or down to change the viewing angle, or focus it and use the arrow keys, Home and End. The left-side switch turns key sound on and off.
+    - group "Mechanical keyboard" [ref=f1e6]:
+        - region "Keyboard surface" [ref=f1e7]:
+            - generic [ref=f1e9]:
+                - generic [ref=f1e10]:
+                    - generic [ref=f1e11]:
+                        - button "esc key" [ref=f1e12] [cursor=pointer]
+                        - button "F1 key" [ref=f1e13] [cursor=pointer]
+                        - button "F2 key" [ref=f1e14] [cursor=pointer]
+                        - button "F3 key" [ref=f1e15] [cursor=pointer]
+                        - button "F4 key" [ref=f1e16] [cursor=pointer]
+                        - button "F5 key" [ref=f1e17] [cursor=pointer]
+                        - button "F6 key" [ref=f1e18] [cursor=pointer]
+                        - button "F7 key" [ref=f1e19] [cursor=pointer]
+                        - button "F8 key" [ref=f1e20] [cursor=pointer]
+                        - button "F9 key" [ref=f1e21] [cursor=pointer]
+                        - button "F10 key" [ref=f1e22] [cursor=pointer]
+                        - button "F11 key" [ref=f1e23] [cursor=pointer]
+                        - button "F12 key" [ref=f1e24] [cursor=pointer]
+                        - button "del key" [ref=f1e25] [cursor=pointer]
+                        - switch "Backlight" [checked] [ref=f1e26] [cursor=pointer]
+                        - checkbox [checked] [aria-hidden]
+                    - generic [ref=f1e27]:
+                        - 'button "` key" [ref=f1e28] [cursor=pointer]'
+                        - button "1 key" [ref=f1e29] [cursor=pointer]
+                        - button "2 key" [ref=f1e30] [cursor=pointer]
+                        - button "3 key" [ref=f1e31] [cursor=pointer]
+                        - button "4 key" [ref=f1e32] [cursor=pointer]
+                        - button "5 key" [ref=f1e33] [cursor=pointer]
+                        - button "6 key" [ref=f1e34] [cursor=pointer]
+                        - button "7 key" [ref=f1e35] [cursor=pointer]
+                        - button "8 key" [ref=f1e36] [cursor=pointer]
+                        - button "9 key" [ref=f1e37] [cursor=pointer]
+                        - button "0 key" [ref=f1e38] [cursor=pointer]
+                        - button "- key" [ref=f1e39] [cursor=pointer]
+                        - button "= key" [ref=f1e40] [cursor=pointer]
+                        - button "backspace key" [ref=f1e41] [cursor=pointer]
+                        - button "home key" [ref=f1e42] [cursor=pointer]
+                    - generic [ref=f1e43]:
+                        - button "tab key" [ref=f1e44] [cursor=pointer]
+                        - button "Q key" [ref=f1e45] [cursor=pointer]
+                        - button "W key" [ref=f1e46] [cursor=pointer]
+                        - button "E key" [ref=f1e47] [cursor=pointer]
+                        - button "R key" [ref=f1e48] [cursor=pointer]
+                        - button "T key" [ref=f1e49] [cursor=pointer]
+                        - button "Y key" [ref=f1e50] [cursor=pointer]
+                        - button "U key" [ref=f1e51] [cursor=pointer]
+                        - button "I key" [ref=f1e52] [cursor=pointer]
+                        - button "O key" [ref=f1e53] [cursor=pointer]
+                        - button "P key" [ref=f1e54] [cursor=pointer]
+                        - button "[ key" [ref=f1e55] [cursor=pointer]
+                        - button "] key" [ref=f1e56] [cursor=pointer]
+                        - button "\\ key" [ref=f1e57] [cursor=pointer]
+                        - button "pg up key" [ref=f1e58] [cursor=pointer]
+                    - generic [ref=f1e59]:
+                        - button "caps key" [ref=f1e60] [cursor=pointer]
+                        - button "A key" [ref=f1e61] [cursor=pointer]
+                        - button "S key" [ref=f1e62] [cursor=pointer]
+                        - button "D key" [ref=f1e63] [cursor=pointer]
+                        - button "F key" [ref=f1e64] [cursor=pointer]
+                        - button "G key" [ref=f1e65] [cursor=pointer]
+                        - button "H key" [ref=f1e66] [cursor=pointer]
+                        - button "J key" [ref=f1e67] [cursor=pointer]
+                        - button "K key" [ref=f1e68] [cursor=pointer]
+                        - button "L key" [ref=f1e69] [cursor=pointer]
+                        - button "; key" [ref=f1e70] [cursor=pointer]
+                        - button "' key" [ref=f1e71] [cursor=pointer]
+                        - button "return key" [ref=f1e72] [cursor=pointer]
+                        - button "pg dn key" [ref=f1e73] [cursor=pointer]
+                    - generic [ref=f1e74]:
+                        - button "shift key" [ref=f1e75] [cursor=pointer]
+                        - button "Z key" [ref=f1e76] [cursor=pointer]
+                        - button "X key" [ref=f1e77] [cursor=pointer]
+                        - button "C key" [ref=f1e78] [cursor=pointer]
+                        - button "V key" [ref=f1e79] [cursor=pointer]
+                        - button "B key" [ref=f1e80] [cursor=pointer]
+                        - button "N key" [ref=f1e81] [cursor=pointer]
+                        - button "M key" [ref=f1e82] [cursor=pointer]
+                        - button ", key" [ref=f1e83] [cursor=pointer]
+                        - button ". key" [ref=f1e84] [cursor=pointer]
+                        - button "/ key" [ref=f1e85] [cursor=pointer]
+                        - button "shift key" [ref=f1e86] [cursor=pointer]
+                        - button "↑ key" [ref=f1e87] [cursor=pointer]
+                        - button "end key" [ref=f1e88] [cursor=pointer]
+                    - generic [ref=f1e89]:
+                        - button "ctrl key" [ref=f1e90] [cursor=pointer]
+                        - button "option key" [ref=f1e91] [cursor=pointer]
+                        - button "⌘ key" [ref=f1e92] [cursor=pointer]
+                        - button "space key" [ref=f1e93] [cursor=pointer]
+                        - button "⌘ key" [ref=f1e94] [cursor=pointer]
+                        - button "option key" [ref=f1e95] [cursor=pointer]
+                        - button "fn key" [ref=f1e96] [cursor=pointer]
+                        - button "← key" [ref=f1e97] [cursor=pointer]
+                        - button "↓ key" [ref=f1e98] [cursor=pointer]
+                        - button "→ key" [ref=f1e99] [cursor=pointer]
+                - group "Viewing angle" [ref=f1e100]:
+                    - 'generic "Viewing angle: roll up or down" [ref=f1e101]':
+                        - generic [ref=f1e103]:
+                            - slider "Viewing angle": '0'
+                    - generic [aria-hidden]: Flat
+                - switch "Key sound" [checked] [ref=f1e104] [cursor=pointer]:
+                    - generic [aria-hidden]: Sound on
+                - checkbox [checked] [aria-hidden]

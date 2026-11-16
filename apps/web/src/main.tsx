@@ -13,7 +13,7 @@ const path = window.location.pathname
 const titles: Record<string, string> = {
   '/plonko': 'plonko · ouuo',
   '/tiny-studio': 'Tiny Studio · ouuo workshop',
-  '/pocket-arcade': 'Pocket Arcade · ouuo workshop',
+  '/pocket-arcade': 'Pocket Arcade · ouuo',
 }
 if (titles[path]) document.title = titles[path]
 
