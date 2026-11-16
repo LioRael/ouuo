@@ -83,13 +83,15 @@ export function createRacer(host: GameHost): Game {
     draw(ctx) {
       ctx.save()
       clear(ctx)
+      const height = ctx.canvas.height
+      const roadBottom = height - 44
       ctx.fillStyle = '#284451'
-      ctx.fillRect(0, 40, 112, 246)
+      ctx.fillRect(0, 40, 112, roadBottom - 40)
       ctx.fillStyle = '#303453'
-      ctx.fillRect(368, 40, 112, 246)
+      ctx.fillRect(368, 40, 112, roadBottom - 40)
       ctx.fillStyle = '#232b42'
-      ctx.fillRect(112, 40, 256, 246)
-      for (let y = 40; y < 286; y += 24) {
+      ctx.fillRect(112, 40, 256, roadBottom - 40)
+      for (let y = 40; y < roadBottom; y += 24) {
         ctx.fillStyle =
           Math.floor((y + distance) / 24) % 2 === 0 ? cream : coral
         ctx.fillRect(108, y, 5, 24)
@@ -97,16 +99,16 @@ export function createRacer(host: GameHost): Game {
       }
       ctx.save()
       ctx.beginPath()
-      ctx.rect(0, 40, 480, 246)
+      ctx.rect(0, 40, 480, roadBottom - 40)
       ctx.clip()
-      for (let y = -40; y < 330; y += 64) {
+      for (let y = -40; y < height + 10; y += 64) {
         const offset = Math.round(y + (distance % 64))
         ctx.fillStyle = lavender
         ctx.fillRect(198, offset, 3, 26)
         ctx.fillRect(280, offset, 3, 26)
       }
-      for (let i = 0; i < 5; i++) {
-        const y = Math.round((i * 86 + distance * 0.6) % 360) - 40
+      for (let i = 0; i < Math.ceil(height / 86) + 1; i++) {
+        const y = Math.round((i * 86 + distance * 0.6) % (height + 40)) - 40
         ctx.fillStyle = cyan
         ctx.fillRect(12, y + 10, 30, 3)
         ctx.fillRect(28, y + 19, 42, 3)
@@ -120,8 +122,8 @@ export function createRacer(host: GameHost): Game {
         ctx.fillRect(442, y + 54, 8, 6)
       }
       for (const obstacle of obstacles) {
-        const y = Math.round(250 - (obstacle.distance - distance))
-        if (y < 12 || y > 310 || obstacle.passed) continue
+        const y = Math.round(height - 70 - (obstacle.distance - distance))
+        if (y < 12 || y > height - 10 || obstacle.passed) continue
         ctx.fillStyle = ink
         ctx.fillRect(obstacle.x - 19, y - 12, 38, 33)
         ctx.fillStyle = gold
@@ -132,6 +134,8 @@ export function createRacer(host: GameHost): Game {
         ctx.fillStyle = coral
         ctx.fillRect(obstacle.x - 19, y + 12, 38, 5)
       }
+      ctx.save()
+      ctx.translate(0, height - 320)
       const carX = Math.round(x) - 12
       ctx.fillStyle = ink
       ctx.fillRect(carX - 4, 236, 32, 12)
@@ -151,19 +155,22 @@ export function createRacer(host: GameHost): Game {
         ctx.fillRect(carX + 15, 272, 5, 8)
       }
       ctx.restore()
-      text(ctx, 'PIXEL RACER', 12, 10, coral, 15)
-      text(ctx, `HULL ${hull}/3`, 170, 13)
-      text(ctx, `${Math.ceil(45 - ticks * step)}s`, 285, 13, gold)
-      text(ctx, `DIST ${Math.floor(distance)}`, 344, 13, lavender)
+      ctx.restore()
+      text(ctx, 'PIXEL RACER', 12, 10, coral, 18)
+      text(ctx, `HULL ${hull}/3`, 170, 12, cream, 18)
+      text(ctx, `${Math.ceil(45 - ticks * step)}s`, 282, 10, gold, 20)
+      text(ctx, `DIST ${Math.floor(distance)}`, 344, 12, lavender, 18)
       ctx.fillStyle = ink
-      ctx.fillRect(0, 286, 480, 34)
-      text(ctx, 'LEFT/RIGHT steer  DOWN brake  A boost', 12, 291, cream, 11)
-      text(ctx, `SPEED ${Math.round(speed)}`, 12, 307, lavender, 10)
-      text(ctx, 'BOOST', 288, 307, cyan, 10)
+      ctx.fillRect(0, roadBottom, 480, 44)
+      text(ctx, '← → steer', 12, roadBottom + 3, cream, 16)
+      text(ctx, '↓ brake', 190, roadBottom + 3, cream, 16)
+      text(ctx, 'A boost', 364, roadBottom + 3, cream, 16)
+      text(ctx, `SPEED ${Math.round(speed)}`, 12, height - 19, lavender, 15)
+      text(ctx, 'BOOST', 268, height - 19, cyan, 15)
       ctx.fillStyle = '#303453'
-      ctx.fillRect(329, 307, 138, 7)
+      ctx.fillRect(329, height - 17, 138, 9)
       ctx.fillStyle = cyan
-      ctx.fillRect(329, 307, Math.round(138 * battery), 7)
+      ctx.fillRect(329, height - 17, Math.round(138 * battery), 9)
       ctx.restore()
     },
   }

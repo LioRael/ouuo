@@ -16,6 +16,7 @@ export function picture(game: Game, elapsed = 0) {
   const rectangles: number[][] = []
   const context = new Proxy({} as CanvasRenderingContext2D, {
     get: (_target, key) => {
+      if (key === 'canvas') return { width: 480, height: 320 }
       if (key === 'fillText') return (text: string) => texts.push(text)
       if (key === 'fillRect')
         return (...values: number[]) => rectangles.push(values)

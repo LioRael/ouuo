@@ -81,10 +81,17 @@ export function createPuzzle(host: GameHost): Game {
     draw(ctx) {
       ctx.save()
       clear(ctx)
-      text(ctx, 'MINI PUZZLE', 18, 12, coral, 18)
-      text(ctx, 'NIGHT LIGHTS', 280, 17, lavender, 12)
-      text(ctx, `LEVEL ${level + 1}/3`, 24, 52, lavender)
-      text(ctx, `MOVES ${history.length}`, 280, 53)
+      const height = ctx.canvas.height
+      const tall = height >= 440
+      text(ctx, 'MINI PUZZLE', 18, 12, coral, 20)
+      text(ctx, 'NIGHT LIGHTS', 280, 17, lavender, 14)
+      text(ctx, `LEVEL ${level + 1}/3`, 24, 52, lavender, 20)
+      text(ctx, `MOVES ${history.length}`, 280, 52, cream, 20)
+      ctx.save()
+      if (tall) {
+        ctx.translate(48, -43 + Math.max(0, Math.floor((height - 454) / 2)))
+        ctx.scale(1.5, 1.5)
+      }
       ctx.fillStyle = '#303453'
       ctx.fillRect(16, 78, 224, 202)
       for (let index = 0; index < 9; index++) {
@@ -117,23 +124,35 @@ export function createPuzzle(host: GameHost): Game {
           ctx.fillRect(x + 28, y + 48, 8, 5)
         }
       }
-      text(ctx, `LIT ${board.filter(Boolean).length}/9`, 280, 83, gold, 16)
-      text(ctx, 'D-PAD: move cursor', 280, 118, cream, 11)
-      text(ctx, 'A: flip a window', 280, 140, cream, 11)
-      text(ctx, 'and its neighbors', 280, 157, cream, 11)
-      text(ctx, '(up/down/left/right)', 280, 174, lavender, 10)
-      text(ctx, 'B: undo one move', 280, 204, cream, 11)
-      text(ctx, 'Light every window.', 280, 239, gold, 11)
-      text(ctx, 'No timer. Take a look.', 280, 256, lavender, 10)
+      ctx.restore()
+      text(
+        ctx,
+        `LIT ${board.filter(Boolean).length}/9`,
+        tall ? 24 : 280,
+        tall ? height - 64 : 83,
+        gold,
+        20,
+      )
+      if (tall) {
+        text(ctx, 'A flip + neighbors', 196, height - 62, cream, 18)
+      } else {
+        text(ctx, 'D-pad move', 280, 125, cream, 18)
+        text(ctx, 'A flip', 280, 164, cream, 18)
+        text(ctx, '+ neighbors', 280, 189, lavender, 16)
+        text(ctx, 'B undo', 280, 227, cream, 18)
+        text(ctx, 'Light them all.', 280, 258, gold, 16)
+      }
       text(
         ctx,
         board.every(Boolean)
-          ? 'ALL LIT!  A: next level  B: undo'
-          : 'Filled cross = lit    Slashed box = dark',
+          ? 'ALL LIT!  A next · B undo'
+          : tall
+            ? 'D-pad move · B undo'
+            : 'Cross = lit · Slash = dark',
         24,
-        296,
+        height - (tall ? 32 : 24),
         board.every(Boolean) ? gold : cream,
-        11,
+        tall ? 18 : 16,
       )
       ctx.restore()
     },

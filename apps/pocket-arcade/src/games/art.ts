@@ -23,5 +23,5 @@ export function text(
 export function clear(ctx: CanvasRenderingContext2D) {
   ctx.imageSmoothingEnabled = false
   ctx.fillStyle = ink
-  ctx.fillRect(0, 0, 480, 320)
+  ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height)
 }

@@ -106,12 +106,17 @@ export function createRhythm(host: GameHost): Game {
     draw(ctx, elapsed) {
       ctx.save()
       clear(ctx)
+      const height = ctx.canvas.height
+      const hitY = height - 70
+      const fallSpeed = (112 * (hitY - 62)) / 188
       ctx.fillStyle = '#373653'
-      ctx.fillRect(0, 60, 480, 112)
+      ctx.fillRect(0, 60, 480, height - 208)
       ctx.fillStyle = '#64506b'
-      ctx.fillRect(0, 172, 480, 46)
+      ctx.fillRect(0, height - 148, 480, 46)
       ctx.fillStyle = '#a87581'
-      ctx.fillRect(0, 218, 480, 56)
+      ctx.fillRect(0, height - 102, 480, 56)
+      ctx.save()
+      ctx.translate(0, height - 320)
       ctx.fillStyle = lavender
       ctx.fillRect(426, 74, 20, 36)
       ctx.fillRect(418, 82, 36, 20)
@@ -165,42 +170,38 @@ export function createRhythm(host: GameHost): Game {
       ctx.fillRect(0, 245, 480, 4)
       for (let x = 4; x < 480; x += 24) ctx.fillRect(x, 245, 3, 20)
       for (const x of [16, 80, 400, 464]) ctx.fillRect(x, 270, 9, 10)
+      ctx.restore()
       ctx.fillStyle = ink
-      ctx.fillRect(0, 278, 480, 42)
+      ctx.fillRect(0, height - 42, 480, 42)
       ctx.fillStyle = '#141b32eb'
-      ctx.fillRect(10, 73, 126, 101)
-      ctx.fillRect(10, 192, 126, 80)
+      ctx.fillRect(8, 73, 132, 145)
       text(ctx, 'RHYTHM RUSH', 18, 14, coral, 18)
-      text(ctx, 'SUNDOWN CIRCUIT / 120 BPM', 18, 38, lavender, 10)
-      text(ctx, `SCORE ${score}`, 18, 81)
-      text(ctx, `COMBO ${combo}`, 18, 104, gold)
-      text(ctx, `BEST ${best}`, 18, 127, lavender)
-      text(ctx, `MISSES ${misses}`, 18, 150)
-      text(ctx, 'PERFECT', 18, 199, cyan, 10)
-      text(ctx, '+/- 60ms', 18, 214, cream, 10)
-      text(ctx, 'GOOD', 18, 237, gold, 10)
-      text(ctx, '+/- 150ms', 18, 252, cream, 10)
+      text(ctx, 'SUNDOWN CIRCUIT / 120 BPM', 18, 38, lavender, 13)
+      text(ctx, `SCORE ${score}`, 14, 83, cream, 20)
+      text(ctx, `COMBO ${combo}`, 14, 119, gold, 20)
+      text(ctx, `BEST ${best}`, 14, 159, lavender, 16)
+      text(ctx, `MISSES ${misses}`, 14, 188, cream, 16)
       for (let lane = 0; lane < 3; lane++) {
         const x = 148 + lane * 80
         ctx.fillStyle = '#1b2545ed'
-        ctx.fillRect(x, 62, 76, 214)
+        ctx.fillRect(x, 62, 76, hitY - 36)
         ctx.fillStyle = colors[lane]
-        ctx.fillRect(x, 250, 76, 3)
+        ctx.fillRect(x, hitY, 76, 3)
         ctx.strokeStyle = colors[lane]
         ctx.lineWidth = 2
-        ctx.strokeRect(x + 16, 238, 44, 26)
+        ctx.strokeRect(x + 16, hitY - 12, 44, 26)
         text(
           ctx,
           labels[lane],
-          x + (lane === 2 ? 34 : 23),
-          279,
+          x + (lane === 2 ? 32 : 16),
+          height - 41,
           colors[lane],
-          12,
+          18,
         )
       }
       chart.forEach((note, index) => {
-        const y = Math.round(250 - (note.time - elapsed) * 112)
-        if (states[index] !== 'pending' || y < 65 || y > 270) return
+        const y = Math.round(hitY - (note.time - elapsed) * fallSpeed)
+        if (states[index] !== 'pending' || y < 65 || y > hitY + 20) return
         const x = 166 + note.lane * 80
         ctx.fillStyle = colors[note.lane]
         ctx.fillRect(x, y - 8, 40, 16)
@@ -210,7 +211,8 @@ export function createRhythm(host: GameHost): Game {
           ctx.fillRect(x + 8 + notch * 9, y - 3, 4, 6)
         }
       })
-      if (elapsed < feedbackUntil) text(ctx, feedback, 152, 302, cream, 11)
+      if (elapsed < feedbackUntil)
+        text(ctx, feedback, 152, height - 20, cream, 16)
       ctx.fillStyle = coral
       ctx.fillRect(0, 0, Math.round(480 * Math.min(1, elapsed / 18.5)), 3)
       ctx.restore()

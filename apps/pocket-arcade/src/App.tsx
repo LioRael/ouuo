@@ -70,7 +70,13 @@ const cartridges = [
   },
 ] as const
 
-function GameArtwork({ id }: { id: GameId }) {
+function GameArtwork({
+  id,
+  thumbnail = false,
+}: {
+  id: GameId
+  thumbnail?: boolean
+}) {
   const canvas = useRef<HTMLCanvasElement>(null)
   useEffect(() => {
     const context = canvas.current?.getContext('2d')
@@ -80,15 +86,19 @@ function GameArtwork({ id }: { id: GameId }) {
     context.save()
     const [x, y, width, height] =
       id === 'rhythm'
-        ? [140, 62, 340, 214]
+        ? thumbnail
+          ? [148, 166, 240, 110]
+          : [140, 62, 340, 214]
         : id === 'puzzle'
           ? [16, 78, 224, 202]
-          : [80, 40, 320, 240]
+          : thumbnail
+            ? [195, 209, 90, 65]
+            : [80, 40, 320, 240]
     context.scale(480 / width, 320 / height)
     context.translate(-x, -y)
     cartridge.factory({ tone: () => {}, finish: () => {} }).draw(context, 3.5)
     context.restore()
-  }, [id])
+  }, [id, thumbnail])
   return (
     <canvas
       ref={canvas}
@@ -139,6 +149,49 @@ function SettingSlider({
         </SliderControl>
       </Slider>
     </div>
+  )
+}
+
+function SettingsBody({ children }: { children: ReactNode }) {
+  const body = useRef<HTMLElement>(null)
+  const content = useRef<HTMLDivElement>(null)
+  const [scrollHint, setScrollHint] = useState('')
+
+  useEffect(() => {
+    const region = body.current!
+    const update = () => {
+      setScrollHint(
+        region.scrollHeight <= region.clientHeight + 1
+          ? ''
+          : region.scrollTop + region.clientHeight >= region.scrollHeight - 1
+            ? '↑ Sound settings'
+            : '↓ More settings',
+      )
+    }
+    const observer = new ResizeObserver(update)
+    observer.observe(region)
+    observer.observe(content.current!)
+    region.addEventListener('scroll', update, { passive: true })
+    update()
+    return () => {
+      observer.disconnect()
+      region.removeEventListener('scroll', update)
+    }
+  }, [])
+
+  return (
+    <>
+      <section
+        className="settings-body"
+        ref={body}
+        aria-label="Sound and keyboard settings"
+        // oxlint-disable-next-line jsx-a11y/no-noninteractive-tabindex -- Keyboard users need to scroll the noninteractive key guide.
+        tabIndex={0}
+      >
+        <div ref={content}>{children}</div>
+      </section>
+      <div className="settings-scroll-hint">{scrollHint}</div>
+    </>
   )
 }
 
@@ -329,15 +382,36 @@ export default function App() {
         ?.querySelector<HTMLElement>('[role="radio"][aria-checked="true"]')
         ?.focus({ preventScroll: true })
     else if (['intro', 'paused', 'result'].includes(screen))
-      root
-        ?.querySelector<HTMLElement>('.screen-primary')
-        ?.focus({ preventScroll: true })
+      root?.querySelector<HTMLElement>('.screen-primary')?.focus()
   }, [screen])
 
   useEffect(() => {
-    const context = canvas.current?.getContext('2d')
-    if (screen !== 'playing' || !context || !game.current) return
+    const group = display.current?.querySelector('[role="radiogroup"]')
+    if (group?.contains(document.activeElement))
+      group
+        .querySelector<HTMLElement>('[role="radio"][aria-checked="true"]')
+        ?.focus({ preventScroll: true })
+  }, [selected])
+
+  useEffect(() => {
+    const surface = canvas.current
+    const context = surface?.getContext('2d')
+    if (screen !== 'playing' || !surface || !context || !game.current) return
     const activeGame = game.current
+    const resize = (width: number, height: number) => {
+      if (width === 0) return
+      const nextHeight = Math.max(
+        SCREEN_HEIGHT,
+        Math.round((SCREEN_WIDTH * height) / width),
+      )
+      if (surface.height !== nextHeight) surface.height = nextHeight
+      context.imageSmoothingEnabled = false
+    }
+    resize(surface.clientWidth, surface.clientHeight)
+    const observer = new ResizeObserver(([entry]) => {
+      resize(entry.contentRect.width, entry.contentRect.height)
+    })
+    observer.observe(surface)
     anchor.current = clock.current() - elapsed.current
     let previous = elapsed.current
     let frame = 0
@@ -350,7 +424,10 @@ export default function App() {
       frame = requestAnimationFrame(draw)
     }
     frame = requestAnimationFrame(draw)
-    return () => cancelAnimationFrame(frame)
+    return () => {
+      cancelAnimationFrame(frame)
+      observer.disconnect()
+    }
   }, [screen, input])
 
   useEffect(() => {
@@ -366,9 +443,7 @@ export default function App() {
         return
       const target = event.target instanceof Element ? event.target : null
       if (
-        target?.closest(
-          'input, select, textarea, [role="slider"], [role="radio"]',
-        ) &&
+        target?.closest('input, select, textarea, [role="slider"]') &&
         event.code !== 'Escape' &&
         event.code !== 'Enter'
       )
@@ -450,7 +525,10 @@ export default function App() {
           {hardware(
             'l',
             'Previous cartridge (L)',
-            <span>L</span>,
+            <>
+              <i className="shoulder-cap" aria-hidden="true" />
+              <span>L</span>
+            </>,
             'shoulder shoulder-left',
           )}
           <div className="cartridge-slot" aria-hidden="true">
@@ -459,7 +537,10 @@ export default function App() {
           {hardware(
             'r',
             'Next cartridge (R)',
-            <span>R</span>,
+            <>
+              <i className="shoulder-cap" aria-hidden="true" />
+              <span>R</span>
+            </>,
             'shoulder shoulder-right',
           )}
         </div>
@@ -525,26 +606,54 @@ export default function App() {
               >
                 {screen === 'off' || screen === 'shutdown' ? (
                   <div className="screen-off">
-                    <span className="off-mark" aria-hidden="true">
-                      p.
-                    </span>
-                    <p>
-                      {screen === 'shutdown'
-                        ? 'See you in a little bit.'
-                        : 'A little time for play.'}
-                    </p>
-                    <span>
+                    <div className="idle-status">
+                      <span>pocket arcade</span>
+                      <span>
+                        {screen === 'shutdown' ? 'powering down' : 'standby'}
+                      </span>
+                    </div>
+                    <div className="idle-message">
+                      <span className="off-mark" aria-hidden="true">
+                        p.
+                      </span>
+                      <p>
+                        {screen === 'shutdown' ? (
+                          'See you in a little bit.'
+                        ) : (
+                          <>
+                            A little time <strong>for play.</strong>
+                          </>
+                        )}
+                      </p>
+                    </div>
+                    <span className="idle-prompt">
+                      <i className="idle-switch" aria-hidden="true" />
                       {screen === 'off'
-                        ? 'Slide the power switch to begin'
-                        : 'Powering down…'}
+                        ? 'Slide power to play'
+                        : 'Goodbye for now'}
                     </span>
                   </div>
                 ) : screen === 'boot' ? (
-                  <div className="boot-screen">
-                    <span>ouuo</span>
-                    <p>small console. big daydreams.</p>
-                    <i />
-                  </div>
+                  <output
+                    className="boot-screen"
+                    aria-label="Starting Pocket Arcade"
+                  >
+                    <span className="idle-status">
+                      <span>pocket os 1.0</span>
+                      <span>starting</span>
+                    </span>
+                    <span className="boot-identity">
+                      <span>ouuo</span>
+                      <span className="boot-tagline">
+                        small console. big daydreams.
+                      </span>
+                    </span>
+                    <span className="boot-cartridges" aria-hidden="true">
+                      {cartridges.map((item) => (
+                        <span key={item.id}>{item.number}</span>
+                      ))}
+                    </span>
+                  </output>
                 ) : (
                   <>
                     <div className="screen-status">
@@ -556,15 +665,29 @@ export default function App() {
                           ? 'audio unavailable · see settings'
                           : volume === 0
                             ? 'sound off'
-                            : 'sound on'}{' '}
-                        <i className="battery" aria-label="Browser powered" />
+                            : 'sound on'}
                       </span>
                     </div>
                     {screen === 'menu' ? (
                       <div className="library-screen">
                         <div className="library-top">
-                          <h2>Your little collection</h2>
-                          <span>3 games, all yours.</span>
+                          <h2>Game library</h2>
+                          <div className="library-position">
+                            <span>
+                              {cartridge.number} /{' '}
+                              {String(cartridges.length).padStart(2, '0')}
+                            </span>
+                            <span className="library-slots" aria-hidden="true">
+                              {cartridges.map((item) => (
+                                <i
+                                  key={item.id}
+                                  data-selected={
+                                    item.id === selected || undefined
+                                  }
+                                />
+                              ))}
+                            </span>
+                          </div>
                         </div>
                         <div className="library-body">
                           <RadioGroup
@@ -589,35 +712,44 @@ export default function App() {
                                 className={`game-choice choice-${item.id}`}
                               >
                                 <span
-                                  className="cartridge-icon"
+                                  className="choice-number"
                                   aria-hidden="true"
                                 >
                                   {item.number}
                                 </span>
-                                <span>
-                                  {item.title}
+                                <span
+                                  className="cartridge-icon"
+                                  aria-hidden="true"
+                                >
+                                  <GameArtwork id={item.id} thumbnail />
+                                </span>
+                                <span className="choice-copy">
+                                  <strong>{item.title}</strong>
                                   <small>{item.genre}</small>
                                 </span>
                                 <span
-                                  className="choice-caret"
+                                  className="choice-cursor"
                                   aria-hidden="true"
-                                >
-                                  ›
-                                </span>
+                                />
                               </Radio>
                             ))}
                           </RadioGroup>
                           <div className="library-preview">
                             <GameArtwork id={selected} />
-                            <span>{cartridge.genre}</span>
+                            <span>
+                              <small>Cartridge {cartridge.number}</small>
+                              <strong>{cartridge.title}</strong>
+                            </span>
                           </div>
                         </div>
                         <div className="library-bottom">
-                          <span>↑ ↓ choose</span>
+                          <span>
+                            <b>L</b> <b>R</b> switch cartridge
+                          </span>
                           <Button
                             className="screen-primary"
                             onClick={() => setScreen('intro')}
-                            aria-label={`Play ${cartridge.title}`}
+                            aria-label={`Let’s play ${cartridge.title}`}
                           >
                             <b>A</b> Let’s play
                           </Button>
@@ -666,7 +798,11 @@ export default function App() {
                           )}
                           {screen === 'intro' && (
                             <span className="intro-controls">
-                              {cartridge.controls}
+                              {cartridge.controls
+                                .split(' · ')
+                                .map((control) => (
+                                  <span key={control}>{control}</span>
+                                ))}
                             </span>
                           )}
                           <div className="overlay-actions">
@@ -679,7 +815,7 @@ export default function App() {
                               }
                               aria-label={
                                 screen === 'paused'
-                                  ? 'Resume game'
+                                  ? 'Keep playing'
                                   : screen === 'intro'
                                     ? 'Begin game'
                                     : 'Play again'
@@ -701,7 +837,7 @@ export default function App() {
                               onClick={library}
                               aria-label="Return to library"
                             >
-                              Library
+                              <b aria-hidden="true">B</b> Library
                             </Button>
                           </div>
                         </div>
@@ -722,7 +858,7 @@ export default function App() {
                     aria-label="Console settings"
                     disabled={!live}
                   >
-                    <span aria-hidden="true">☷</span> Settings
+                    <b aria-hidden="true">select</b> Settings
                   </DialogTrigger>
                   <DialogContent
                     className="console-settings"
@@ -732,38 +868,76 @@ export default function App() {
                       ) ?? null
                     }
                   >
-                    <div className="settings-title">
-                      <DialogTitle>Console settings</DialogTitle>
-                      <DialogClose aria-label="Close settings">×</DialogClose>
+                    <div className="settings-header">
+                      <div className="settings-title">
+                        <DialogTitle>Console settings</DialogTitle>
+                        <DialogClose aria-label="Close settings">×</DialogClose>
+                      </div>
+                      <DialogDescription>
+                        Make yourself comfortable.
+                      </DialogDescription>
                     </div>
-                    <DialogDescription>
-                      Make yourself comfortable.
-                    </DialogDescription>
-                    <SettingSlider
-                      name="Volume"
-                      value={volume}
-                      onChange={setVolume}
-                    />
-                    <SettingSlider
-                      name="Brightness"
-                      value={brightness}
-                      onChange={setBrightness}
-                      min={40}
-                    />
-                    <p>Visit-only settings. Nothing saved.</p>
-                    <p>
-                      Arrows move. Z / Space: A. X: B. Enter / Esc: pause.
-                      Shift: settings. Q / E: cartridge.
-                    </p>
-                    {audioProblem && (
-                      <Button onClick={unlock}>Retry audio</Button>
-                    )}
-                    <DialogClose className="screen-primary">
-                      Back to console
-                    </DialogClose>
-                    <a className="console-home" href={homeUrl}>
-                      Back to ouuo
-                    </a>
+                    <SettingsBody>
+                      <SettingSlider
+                        name="Volume"
+                        value={volume}
+                        onChange={setVolume}
+                      />
+                      <SettingSlider
+                        name="Brightness"
+                        value={brightness}
+                        onChange={setBrightness}
+                        min={40}
+                      />
+                      <p>Visit-only settings. Nothing saved.</p>
+                      <dl className="settings-bindings">
+                        <div>
+                          <dt>Move</dt>
+                          <dd>
+                            <kbd>↑ ↓ ← →</kbd>
+                          </dd>
+                        </div>
+                        <div>
+                          <dt>A / B</dt>
+                          <dd>
+                            <kbd>Z / Space</kbd>
+                            <span>/</span>
+                            <kbd>X</kbd>
+                          </dd>
+                        </div>
+                        <div>
+                          <dt>Pause</dt>
+                          <dd>
+                            <kbd>Enter / Esc</kbd>
+                          </dd>
+                        </div>
+                        <div>
+                          <dt>Settings</dt>
+                          <dd>
+                            <kbd>Shift</kbd>
+                          </dd>
+                        </div>
+                        <div>
+                          <dt>Cartridge</dt>
+                          <dd>
+                            <kbd>Q / E</kbd>
+                          </dd>
+                        </div>
+                      </dl>
+                      {audioProblem && (
+                        <Button className="screen-secondary" onClick={unlock}>
+                          Retry audio
+                        </Button>
+                      )}
+                    </SettingsBody>
+                    <div className="settings-footer">
+                      <DialogClose className="screen-primary">
+                        Back to console
+                      </DialogClose>
+                      <a className="console-home" href={homeUrl}>
+                        Back to ouuo
+                      </a>
+                    </div>
                   </DialogContent>
                 </Dialog>
               </div>
