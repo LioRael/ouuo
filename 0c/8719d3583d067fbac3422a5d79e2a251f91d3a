@@ -1,0 +1,222 @@
+.agents/skills/ui-sdk/SKILL.md
+  h_9d56aba080c170 1-56
+.agents/skills/ui-sdk/references/agent-ready.md
+  h_9d56aba080c170 1-136
+.agents/skills/ui-sdk/references/build-interface.md
+  h_9d56aba080c170 1-187
+.agents/skills/ui-sdk/references/create-component.md
+  h_9d56aba080c170 1-88
+.agents/skills/ui-sdk/references/patterns.md
+  h_9d56aba080c170 1-246
+.agents/skills/ui-sdk/references/styles.md
+  h_9d56aba080c170 1-66
+.agents/skills/ui-sdk/references/testing.md
+  h_9d56aba080c170 1-172
+.agents/skills/ui-sdk/references/web-components.md
+  h_9d56aba080c170 1-78
+.amp/services.yaml
+  h_9d56aba080c170 1-15
+.claude/skills/ui-sdk
+  h_9d56aba080c170 1
+.github/workflows/ci.yml
+  h_9d56aba080c170 1-30
+.gitignore
+  h_9d56aba080c170 1-11
+.oxlintrc.json
+  h_9d56aba080c170 1-11
+.prettierignore
+  h_9d56aba080c170 1-8
+.prettierrc.json
+  h_9d56aba080c170 1
+AGENTS.md
+  h_9d56aba080c170 1-41
+CONTRIBUTING.md
+  h_9d56aba080c170 1-58
+LICENSE
+  h_9d56aba080c170 1-22
+README.md
+  h_9d56aba080c170 1-87
+apps/keyboard/index.html
+  h_9d56aba080c170 1-16
+apps/keyboard/keycap.html
+  h_9d56aba080c170 1-16
+apps/keyboard/package.json
+  h_9d56aba080c170 1-23
+apps/keyboard/playwright.config.ts
+  h_9d56aba080c170 1-19
+apps/keyboard/src/App.tsx
+  h_9d56aba080c170 1-383
+apps/keyboard/src/keyboard.css
+  h_9d56aba080c170 1-514
+apps/keyboard/src/keycap-main.tsx
+  h_9d56aba080c170 1-85
+apps/keyboard/src/keycap-scene.ts
+  h_9d56aba080c170 1-855
+apps/keyboard/src/keycap.css
+  h_9d56aba080c170 1-108
+apps/keyboard/src/layout.ts
+  h_9d56aba080c170 1-126
+apps/keyboard/src/main.tsx
+  h_9d56aba080c170 1-10
+apps/keyboard/src/mechanical-keyboard.ts
+  h_9d56aba080c170 1-281
+apps/keyboard/tests/keyboard.spec.ts
+  h_9d56aba080c170 1-762
+apps/keyboard/tests/keycap.spec.ts
+  h_9d56aba080c170 1-206
+apps/keyboard/tsconfig.json
+  h_9d56aba080c170 1-4
+apps/keyboard/vite.config.ts
+  h_9d56aba080c170 1-12
+apps/plonko/README.md
+  h_9d56aba080c170 1-41
+apps/plonko/index.html
+  h_9d56aba080c170 1-17
+apps/plonko/package.json
+  h_9d56aba080c170 1-22
+apps/plonko/src/App.tsx
+  h_9d56aba080c170 1-863
+apps/plonko/src/main.tsx
+  h_9d56aba080c170 1-10
+apps/plonko/src/music.test.ts
+  h_9d56aba080c170 1-81
+apps/plonko/src/music.ts
+  h_9d56aba080c170 1-270
+apps/plonko/src/piano.css
+  h_9d56aba080c170 1-1793
+apps/plonko/src/practice-timeline.ts
+  h_9d56aba080c170 1-162
+apps/plonko/src/rendering.ts
+  h_9d56aba080c170 1-146
+apps/plonko/src/score.test.ts
+  h_9d56aba080c170 1-225
+apps/plonko/src/score.ts
+  h_9d56aba080c170 1-148
+apps/plonko/src/song-browser.ts
+  h_9d56aba080c170 1-114
+apps/plonko/src/transport.test.ts
+  h_9d56aba080c170 1-21
+apps/plonko/src/transport.ts
+  h_9d56aba080c170 1-32
+apps/plonko/src/usePiano.ts
+  h_9d56aba080c170 1-584
+apps/plonko/tsconfig.json
+  h_9d56aba080c170 1
+apps/plonko/vercel.json
+  h_9d56aba080c170 1-5
+apps/plonko/vite.config.ts
+  h_9d56aba080c170 1-7
+apps/pocket-arcade/README.md
+  h_9d56aba080c170 1-31
+apps/pocket-arcade/index.html
+  h_9d56aba080c170 1-16
+apps/pocket-arcade/package.json
+  h_9d56aba080c170 1-21
+apps/pocket-arcade/src/App.tsx
+  h_9d56aba080c170 1-27
+apps/pocket-arcade/src/main.tsx
+  h_9d56aba080c170 1-10
+apps/pocket-arcade/tsconfig.json
+  h_9d56aba080c170 1
+apps/pocket-arcade/vercel.json
+  h_9d56aba080c170 1-5
+apps/pocket-arcade/vite.config.ts
+  h_9d56aba080c170 1-7
+apps/tiny-studio/README.md
+  h_9d56aba080c170 1-31
+apps/tiny-studio/index.html
+  h_9d56aba080c170 1-16
+apps/tiny-studio/package.json
+  h_9d56aba080c170 1-21
+apps/tiny-studio/src/App.tsx
+  h_9d56aba080c170 1-27
+apps/tiny-studio/src/main.tsx
+  h_9d56aba080c170 1-10
+apps/tiny-studio/tsconfig.json
+  h_9d56aba080c170 1
+apps/tiny-studio/vercel.json
+  h_9d56aba080c170 1-5
+apps/tiny-studio/vite.config.ts
+  h_9d56aba080c170 1-7
+apps/web/README.md
+  h_9d56aba080c170 1-28
+apps/web/index.html
+  h_9d56aba080c170 1-26
+apps/web/package.json
+  h_9d56aba080c170 1-21
+apps/web/src/App.tsx
+  h_9d56aba080c170 1-216
+apps/web/src/home.css
+  h_9d56aba080c170 1-563
+apps/web/src/main.tsx
+  h_9d56aba080c170 1-75
+apps/web/tsconfig.json
+  h_9d56aba080c170 1
+apps/web/vercel.json
+  h_9d56aba080c170 1-6
+apps/web/vite.config.ts
+  h_9d56aba080c170 1-7
+docs/ARCHITECTURE.md
+  h_9d56aba080c170 1-58
+docs/DEPLOYMENT.md
+  h_9d56aba080c170 1-99
+docs/DESIGN.md
+  h_9d56aba080c170 1-24
+docs/PLAN.md
+  h_9d56aba080c170 1-9
+docs/ROADMAP.md
+  h_9d56aba080c170 1-77
+docs/UI-SDK.md
+  h_9d56aba080c170 1-138
+docs/ui-sdk-architecture.md
+  h_9d56aba080c170 1-131
+package.json
+  h_9d56aba080c170 1-36
+packages/audio/package.json
+  h_9d56aba080c170 1-12
+packages/audio/src/piano.test.ts
+  h_9d56aba080c170 1-113
+packages/audio/src/piano.ts
+  h_9d56aba080c170 1-339
+packages/audio/tsconfig.json
+  h_9d56aba080c170 1
+packages/shared/package.json
+  h_9d56aba080c170 1-19
+packages/shared/src/base.css
+  h_9d56aba080c170 1-183
+packages/shared/src/index.tsx
+  h_9d56aba080c170 1-68
+packages/shared/tsconfig.json
+  h_9d56aba080c170 1
+playwright.config.ts
+  h_9d56aba080c170 1-14
+pnpm-lock.yaml
+  h_9d56aba080c170 1-1743
+pnpm-workspace.yaml
+  h_9d56aba080c170 1-3
+skills-lock.json
+  h_9d56aba080c170 1-11
+tests/audio.spec.ts
+  h_9d56aba080c170 1-111
+tests/ouuo.spec.ts
+  h_9d56aba080c170 1-150
+tests/piano-practice.spec.ts
+  h_9d56aba080c170 1-718
+tsconfig.json
+  h_9d56aba080c170 1-21
+turbo.json
+  h_9d56aba080c170 1-12
+vitest.config.ts
+  h_9d56aba080c170 1-5
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "0c8719d3583d067fbac3422a5d79e2a251f91d3a",
+  "prompts": {},
+  "humans": {
+    "h_9d56aba080c170": {
+      "author": "LioRael <leo@lenso.dev>"
+    }
+  }
+}
