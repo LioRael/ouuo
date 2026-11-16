@@ -1,0 +1,21 @@
+{
+  "name": "@ouuo/web",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0 --port 5173",
+    "build": "vite build",
+    "typecheck": "tsc --noEmit -p tsconfig.json"
+  },
+  "dependencies": {
+    "@ouuo/plonko": "workspace:*",
+    "@ouuo/pocket-arcade": "workspace:*",
+    "@ouuo/shared": "workspace:*",
+    "@ouuo/tiny-studio": "workspace:*",
+    "@ui-sdk/core": "0.1.0-beta.2",
+    "@ui-sdk/react": "0.1.0-beta.2",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
+  }
+}

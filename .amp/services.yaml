@@ -1,0 +1,15 @@
+services:
+  ouuo:
+    command: pnpm --filter @ouuo/web exec vite --host 0.0.0.0 --port "$PORT" --strictPort
+    port: 5197
+    health: /
+    portal:
+      title: ouuo
+      description: The collection and plonko. Sound starts only when you play.
+  keyboard:
+    command: pnpm --filter @ouuo/keyboard exec vite --host 0.0.0.0 --port "$PORT" --strictPort
+    port: 5198
+    health: /
+    portal:
+      title: Mechanical Keyboard
+      description: Standalone keyboard study. Sound is on by default and starts only when you press, click or tap a key.

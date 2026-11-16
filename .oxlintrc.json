@@ -1,0 +1,11 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": ["typescript", "react", "react-hooks", "jsx-a11y"],
+  "categories": { "correctness": "error" },
+  "options": { "typeAware": true },
+  "rules": {
+    "eslint/eqeqeq": ["error", "always"],
+    "typescript/no-floating-promises": ["error", { "ignoreVoid": false }],
+    "typescript/no-misused-promises": "error"
+  }
+}

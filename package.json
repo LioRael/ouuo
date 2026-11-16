@@ -1,0 +1,36 @@
+{
+  "name": "ouuo",
+  "private": true,
+  "type": "module",
+  "version": "0.1.0",
+  "packageManager": "pnpm@12.9.1",
+  "engines": {
+    "node": ">=22.12"
+  },
+  "scripts": {
+    "dev": "turbo dev",
+    "build": "turbo build",
+    "build:pages": "rm -rf dist && pnpm --filter @ouuo/plonko exec vite build --base /plonko/ --outDir ../../dist/plonko --emptyOutDir && pnpm --filter @ouuo/keyboard exec vite build --base /keyboard/ --outDir ../../dist/keyboard --emptyOutDir",
+    "typecheck": "turbo typecheck",
+    "lint": "oxlint --type-aware apps packages tests --max-warnings 0",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "test": "vitest run",
+    "test:e2e": "playwright test",
+    "check": "pnpm typecheck && pnpm lint && pnpm test && pnpm build"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.65.1",
+    "@types/node": "^26.6.6",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.3.0",
+    "oxlint": "^1.93.0",
+    "oxlint-tsgolint": "^7.0.2007",
+    "prettier": "^3.10.1",
+    "turbo": "^2.11.11",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.8",
+    "vitest": "^5.1.0"
+  }
+}

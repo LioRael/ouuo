@@ -1,0 +1,19 @@
+{
+  "name": "@ouuo/shared",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.tsx",
+    "./base.css": "./src/base.css"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit -p tsconfig.json"
+  },
+  "dependencies": {
+    "@fontsource-variable/instrument-sans": "^5.3.0",
+    "@ui-sdk/core": "0.1.0-beta.2",
+    "@ui-sdk/react": "0.1.0-beta.2",
+    "react": "^19.3.1"
+  }
+}

@@ -1,0 +1,8 @@
+pnpm-lock.yaml
+.agents/
+.claude/
+.amp/
+dist/
+node_modules/
+playwright-report/
+test-results/
