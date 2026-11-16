@@ -1,0 +1,152 @@
+apps/pocket-arcade/src/games/rhythm.ts
+  s_de6fe10384571c::t_521d232ae2698e 1-219
+.playwright-cli/page-2026-11-16T08-57-05-898Z.yml
+  s_de6fe10384571c::t_3314674de17de3 1-105
+apps/pocket-arcade/src/games/puzzle.test.ts
+  s_de6fe10384571c::t_e6588c9a5b679c 1-72
+docs/ROADMAP.md
+  s_de6fe10384571c::t_61a513dd0fda05 3,33-35
+.playwright-cli/console-2026-11-16T08-50-24-813Z.log
+  s_de6fe10384571c::t_78793383cdeee1 2
+  s_de6fe10384571c::t_7b0b525eca0063 1
+  s_de6fe10384571c::t_197cc970afba8a 3
+.playwright-cli/page-2026-11-16T08-40-58-241Z.yml
+  s_de6fe10384571c::t_e7c4b50fe776f9 1-105
+apps/pocket-arcade/README.md
+  s_de6fe10384571c::t_c70683be506458 3,5-13,24,37,39
+.playwright-cli/console-2026-11-16T08-39-29-400Z.log
+  s_de6fe10384571c::t_d7fd5595441e8d 1-4
+  s_de6fe10384571c::t_1e601cf425d2f2 5
+apps/pocket-arcade/src/games/racer.test.ts
+  s_de6fe10384571c::t_9ecf8da9b2dd21 1-75
+apps/web/index.html
+  s_de6fe10384571c::t_2e51080ded4032 9,13,17,20-43
+apps/pocket-arcade/index.html
+  s_de6fe10384571c::t_5d2bcff09877a9 8,10
+apps/web/src/App.tsx
+  s_de6fe10384571c::t_0c877ca63c0c16 176
+apps/pocket-arcade/src/game.ts
+  s_de6fe10384571c::t_0f39dc764ed312 1-15
+apps/keyboard/index.html
+  s_de6fe10384571c::t_2e51080ded4032 10-36
+apps/pocket-arcade/src/audio.ts
+  s_de6fe10384571c::t_a9d92b79da11d1 1-72
+.playwright-cli/page-2026-11-16T08-50-25-744Z.yml
+  s_de6fe10384571c::t_6c61fd492e982a 1-63
+apps/pocket-arcade/src/App.tsx
+  s_de6fe10384571c::t_740dc3e426f50d 711
+  s_de6fe10384571c::t_b5151c03fe4346 806-808
+  s_de6fe10384571c::t_0f39dc764ed312 1-2,4-11,13-18,20-29,31,33-48,50-58,60-68,70-81,83-86,88,93,95-98,102-145,161-178,180-222,224-252,254-260,262-281,283-298,300-326,328-349,351-391,393,395-398,403-424,428-433,435-464,466-470,472-479,481-485,487-490,492,494,497-505,507-521,523-527,529-534,540-688,690,692-710,712-732,739,741-761,763-770,787-795,798-802,804-805,814-815
+  s_de6fe10384571c::t_a863683a83b8d4 59
+  s_de6fe10384571c::t_6f1239986db278 740
+  s_de6fe10384571c::t_f7cf24502a37c4 299
+  s_de6fe10384571c::t_cb97680454b9f7 94
+  s_de6fe10384571c::t_c323fc47ac7ec9 689
+  s_de6fe10384571c::t_8a4ad938311716 146-160,261,327,399-402,535-539
+  s_de6fe10384571c::t_0d17bebe98ceec 392
+  s_de6fe10384571c::t_103b2d8e6e4cc8 471
+  s_de6fe10384571c::t_bda8dc638d6a7b 69
+  s_de6fe10384571c::t_8e631263d6bbd8 733-738
+  s_de6fe10384571c::t_b1d445492bc3fa 762
+  s_de6fe10384571c::t_effedfea91b2e4 486
+  s_de6fe10384571c::t_a386378406b7e7 796-797
+  s_de6fe10384571c::t_8833246de71cfb 522
+  s_de6fe10384571c::t_e5f9433f4ed18c 491
+  s_de6fe10384571c::t_8b94781fb331ad 528
+  s_de6fe10384571c::t_b6cedfb16d617f 87
+  s_de6fe10384571c::t_ef819728fa5ff7 394
+  s_de6fe10384571c::t_bf8863547b8d6f 493
+  s_de6fe10384571c::t_03465286820067 434
+  h_9d56aba080c170 82,89-91
+  s_de6fe10384571c::t_922a0227c0436e 32
+  s_de6fe10384571c::t_9ee6d856d1452b 350
+  s_de6fe10384571c::t_821081d63a184b 771-786
+  s_de6fe10384571c::t_80905295061899 3
+  s_de6fe10384571c::t_318722a39ab7b9 480
+  s_de6fe10384571c::t_1fadd8cd539df2 19
+  s_de6fe10384571c::t_9c580844214117 506
+  s_de6fe10384571c::t_5d39b611450283 12
+  s_de6fe10384571c::t_fb3ebe77ed683e 495-496
+  s_de6fe10384571c::t_658dc2e50fe74a 803
+  s_de6fe10384571c::t_94dbb0163cf8bd 282
+  s_de6fe10384571c::t_a310d0c1f47c9e 253
+  s_de6fe10384571c::t_fb905d56c175b1 49
+  s_de6fe10384571c::t_41c6fcda3b801d 691
+  s_de6fe10384571c::t_558ee49b3f3eed 425-427
+  s_de6fe10384571c::t_d1e975100d6a69 179
+  s_de6fe10384571c::t_ae21a4bd51594d 465
+  s_de6fe10384571c::t_7c5e742153ec4f 223
+  s_de6fe10384571c::t_18f628de394ed7 809-813
+  s_de6fe10384571c::t_034978b76208c8 816-818
+  h_9d56aba080c170 819-824
+.playwright-cli/console-2026-11-16T08-43-27-820Z.log
+  s_de6fe10384571c::t_7343e776374cb4 1-3
+docs/UI-SDK.md
+  s_de6fe10384571c::t_2b79a5a364b970 30-37,69
+.playwright-cli/console-2026-11-16T08-41-02-963Z.log
+  s_de6fe10384571c::t_37b3a6fe5e5094 5
+  s_de6fe10384571c::t_9adee186533380 3-4
+  s_de6fe10384571c::t_0f39dc764ed312 1-2
+  s_de6fe10384571c::t_2224a7459fbcbe 6
+.playwright-cli/page-2026-11-16T08-40-53-814Z.yml
+  s_de6fe10384571c::t_1f020e9b799fca 1-105
+apps/pocket-arcade/src/input.ts
+  s_de6fe10384571c::t_f90b9f7db73d3b 1-66
+.playwright-cli/page-2026-11-16T08-41-03-573Z.yml
+  s_de6fe10384571c::t_0f39dc764ed312 1-105
+apps/web/src/main.tsx
+  s_de6fe10384571c::t_888e69b418ff4f 16
+.playwright-cli/page-2026-11-16T08-43-28-088Z.yml
+  s_de6fe10384571c::t_4becc22cacbe0c 1-84
+.playwright-cli/console-2026-11-16T08-40-55-565Z.log
+  h_9d56aba080c170 1-4
+.playwright-cli/console-2026-11-16T08-57-03-106Z.log
+  h_9d56aba080c170 1-11
+apps/keyboard/src/App.tsx
+  h_9d56aba080c170 13,123-145,267-278,298,302-305,317,422-452
+apps/keyboard/src/keyboard.css
+  h_9d56aba080c170 6,25-67
+apps/keyboard/src/mechanical-keyboard.ts
+  h_9d56aba080c170 198-204,218
+apps/keyboard/tests/keyboard.spec.ts
+  h_9d56aba080c170 315,740-741,766-844
+apps/pocket-arcade/src/arcade.css
+  h_9d56aba080c170 1-1243
+apps/pocket-arcade/src/games/art.ts
+  h_9d56aba080c170 1-27
+apps/pocket-arcade/src/games/puzzle.ts
+  h_9d56aba080c170 1-141
+apps/pocket-arcade/src/games/racer.ts
+  h_9d56aba080c170 1-170
+apps/pocket-arcade/src/games/rhythm.test.ts
+  h_9d56aba080c170 1-128
+apps/pocket-arcade/src/games/test-helpers.ts
+  h_9d56aba080c170 1-28
+apps/pocket-arcade/src/input.test.ts
+  h_9d56aba080c170 1-28
+docs/DESIGN.md
+  h_9d56aba080c170 23
+tests/pocket-arcade.spec.ts
+  h_9d56aba080c170 1-284
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "e50fdd0530b1111d87c6d124b6fc6c9f5e0d4049",
+  "prompts": {},
+  "humans": {
+    "h_9d56aba080c170": {
+      "author": "LioRael <leo@lenso.dev>"
+    }
+  },
+  "sessions": {
+    "s_de6fe10384571c": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a1e381-f2ea-7e00-8986-94ba3ca8ba2b",
+        "model": "gpt-6.1-sol"
+      },
+      "human_author": "LioRael <leo@lenso.dev>"
+    }
+  }
+}
