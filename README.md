@@ -76,12 +76,6 @@ Screenshot locations are reserved for verified captures: [`docs/media/collection
 
 Add a real repository or deployment link when one exists. Pair the introduction with the screenshots above or a recording made from the running app.
 
-### 中文简介
-
-ouuo 是一个开源的浏览器交互玩具集合。目前可玩的是 plonko，支持键盘和触控演奏、原创曲目 Daybreak 的试听与节奏挑战。Tiny Studio 和 Pocket Arcade 仍在开发中，入口页不是可玩的成品。
-
-在仓库根目录运行 `pnpm install --frozen-lockfile`，再运行 `pnpm --filter @ouuo/web dev`，打开 `http://localhost:5173`。需要 Node.js 22.12+ 和 pnpm 12.9.1。
-
 ## License
 
 Original project code and Daybreak are available under the [MIT license](LICENSE), copyright 2026 ouuo contributors. Dependencies and bundled fonts retain their own licenses; preserve their notices when redistributing them.
