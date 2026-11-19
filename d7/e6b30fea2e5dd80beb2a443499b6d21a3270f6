@@ -1,0 +1,21 @@
+docs/DEPLOYMENT.md
+  s_06e1b54604a4a6::t_3ccbe1a4a12e7d 23,25,32
+package.json
+  s_06e1b54604a4a6::t_c42ead0e7bb3de 13
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "d7e6b30fea2e5dd80beb2a443499b6d21a3270f6",
+  "prompts": {},
+  "sessions": {
+    "s_06e1b54604a4a6": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a1f378-5ba1-7d41-a4f0-4c2910617aee",
+        "model": "gpt-6.2-sol"
+      },
+      "human_author": "LioRael <leo@lenso.dev>"
+    }
+  }
+}
