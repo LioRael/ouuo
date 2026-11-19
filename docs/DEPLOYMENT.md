@@ -20,16 +20,16 @@ pnpm --filter @ouuo/web build
 
 `pnpm build` builds all sites through Turbo. Deploy only the selected site's `dist` contents, not the workspace, source directory or `node_modules`.
 
-## Cloudflare Pages: plonko and keyboard
+## Cloudflare Pages on ouuo.dev
 
-For a single Pages project serving only these two apps, use the repository root as the build root:
+Use the repository root as the build root:
 
 ```sh
 pnpm install --frozen-lockfile
 pnpm build:pages
 ```
 
-Publish the root `dist` directory. The build places plonko under `/plonko/` and keyboard under `/keyboard/`, with each app's assets using the matching prefix. It does not publish the collection or workshop apps. The normal standalone builds remain available separately.
+Publish the root `dist` directory. The build publishes plonko at `/plonko/`, keyboard at `/keyboard/` and Pocket Arcade at `/pocket-arcade/`, with each app's assets using the matching prefix.
 
 ## One collection site
 
