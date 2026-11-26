@@ -6,16 +6,17 @@ ouuo is an open-source collection of browser instruments and digital toys. Start
 
 ## What's here
 
-| App                                           | Status                        | Collection route  |
-| --------------------------------------------- | ----------------------------- | ----------------- |
-| [Web](apps/web/README.md)                     | Collection website            | `/`               |
-| [plonko](apps/plonko/README.md)               | Implemented playable work     | `/plonko/`        |
-| [Tiny Studio](apps/tiny-studio/README.md)     | Nonplayable workshop entrance | `/tiny-studio/`   |
-| [Pocket Arcade](apps/pocket-arcade/README.md) | Nonplayable workshop entrance | `/pocket-arcade/` |
+| App                                           | Status                         | Collection route  |
+| --------------------------------------------- | ------------------------------ | ----------------- |
+| [Web](apps/web/README.md)                     | Collection website             | `/`               |
+| [plonko](apps/plonko/README.md)               | Implemented playable work      | `/plonko/`        |
+| [Tiny Studio](apps/tiny-studio/README.md)     | Nonplayable workshop entrance  | `/tiny-studio/`   |
+| [Pocket Arcade](apps/pocket-arcade/README.md) | Playable experimental handheld | `/pocket-arcade/` |
+| [Mechanical Keyboard](apps/keyboard/)         | Playable keyboard exhibit      | `/keyboard/`      |
 
-plonko includes free play, listen and challenge modes, keyboard and touch input, sustain, volume, mute, key labels and settings. Tiny Studio and Pocket Arcade describe future work, not working synthesizers or games. Browser verification is in progress; this README is not a test-results report. No public deployment or GitHub repository URL has been announced.
+plonko includes free play, listen and challenge modes, keyboard and touch input, sustain, volume, mute, key labels and settings. Pocket Arcade includes Rhythm Rush, Pixel Racer, and Mini Puzzle. Mechanical Keyboard is a playable keyboard exhibit; Tiny Studio is still a nonplayable workshop preview. The production site is [ouuo.dev](https://ouuo.dev/).
 
-plonko was previously named Glass Piano. Existing `/glass-piano/` links still open the instrument. Its workspace directory is `apps/plonko` and its package is `@ouuo/plonko`.
+plonko was previously named Glass Piano. The collection router recognizes `/glass-piano/` as an alias for plonko. Its workspace directory is `apps/plonko` and its package is `@ouuo/plonko`.
 
 ## Run locally
 
@@ -72,9 +73,9 @@ Screenshot locations are reserved for verified captures: [`docs/media/collection
 
 ## Share ouuo
 
-> ouuo is a small open-source collection of playable interfaces. Its first instrument, plonko, combines a touch-and-keyboard piano with an original melody and a timing challenge. Built with React, Web Audio and UI SDK. Tiny Studio and Pocket Arcade are still in the workshop.
+> ouuo is a small open-source collection of playable interfaces. Its first instrument, plonko, combines a touch-and-keyboard piano with an original melody and a timing challenge. Built with React, Web Audio and UI SDK. Pocket Arcade adds three experimental handheld games, and Mechanical Keyboard is a playable keyboard exhibit. Tiny Studio is still in the workshop.
 
-Add a real repository or deployment link when one exists. Pair the introduction with the screenshots above or a recording made from the running app.
+Share the [repository](https://github.com/LioRael/ouuo) or [production site](https://ouuo.dev/). Pair the introduction with the screenshots above or a recording made from the running app.
 
 ## License
 

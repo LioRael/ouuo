@@ -153,6 +153,18 @@ export default function App() {
             <span>Free play · Original music · Keyboard & touch</span>
             <span>Sound is off until you play</span>
           </div>
+          <div className="ledger-entries additional-exhibits">
+            <a href="/keyboard/">
+              <span>Mechanical Keyboard</span>
+              <span>A keyboard to play with</span>
+              <span>Playable now</span>
+            </a>
+            <a href="/pocket-arcade/">
+              <span>Pocket Arcade</span>
+              <span>A little world you can hold</span>
+              <span>Playable study</span>
+            </a>
+          </div>
         </section>
 
         <section className="workshop-ledger" aria-labelledby="workshop-title">
@@ -169,11 +181,6 @@ export default function App() {
               <span>Tiny Studio</span>
               <span>A pocket-sized music desk</span>
               <span>In development</span>
-            </a>
-            <a href="/pocket-arcade/">
-              <span>Pocket Arcade</span>
-              <span>A little world you can hold</span>
-              <span>Playable study</span>
             </a>
           </div>
         </section>

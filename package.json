@@ -10,7 +10,7 @@
   "scripts": {
     "dev": "turbo dev",
     "build": "turbo build",
-    "build:pages": "rm -rf dist && pnpm --filter @ouuo/plonko exec vite build --base /plonko/ --outDir ../../dist/plonko --emptyOutDir && pnpm --filter @ouuo/keyboard exec vite build --base /keyboard/ --outDir ../../dist/keyboard --emptyOutDir && pnpm --filter @ouuo/pocket-arcade exec vite build --base /pocket-arcade/ --outDir ../../dist/pocket-arcade --emptyOutDir",
+    "build:pages": "pnpm --filter @ouuo/web exec vite build --base / --outDir ../../dist --emptyOutDir && pnpm --filter @ouuo/plonko exec vite build --base /plonko/ --outDir ../../dist/plonko --emptyOutDir && pnpm --filter @ouuo/keyboard exec vite build --base /keyboard/ --outDir ../../dist/keyboard --emptyOutDir && pnpm --filter @ouuo/pocket-arcade exec vite build --base /pocket-arcade/ --outDir ../../dist/pocket-arcade --emptyOutDir && pnpm --filter @ouuo/tiny-studio exec vite build --base /tiny-studio/ --outDir ../../dist/tiny-studio --emptyOutDir",
     "typecheck": "turbo typecheck",
     "lint": "oxlint --type-aware apps packages tests --max-warnings 0",
     "format": "prettier --write .",
