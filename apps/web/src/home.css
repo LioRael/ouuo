@@ -306,6 +306,9 @@
   color: var(--muted);
   line-height: 1.5;
 }
+.additional-exhibits {
+  margin-top: 32px;
+}
 .ledger-entries a {
   display: grid;
   grid-template-columns: 1fr 1.4fr auto;

@@ -29,7 +29,7 @@ pnpm install --frozen-lockfile
 pnpm build:pages
 ```
 
-Publish the root `dist` directory. The build publishes plonko at `/plonko/`, keyboard at `/keyboard/` and Pocket Arcade at `/pocket-arcade/`, with each app's assets using the matching prefix.
+Publish the root `dist` directory. The collection is built to `dist/index.html` at `/`. Standalone builds are published at `/plonko/`, `/keyboard/`, `/pocket-arcade/` and `/tiny-studio/`, each with its own asset prefix. Tiny Studio is a nonplayable workshop preview. Leave `VITE_HOME_URL` unset so exhibit home links return to the collection.
 
 ## One collection site
 
